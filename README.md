@@ -12,9 +12,10 @@ A complete terminal-style UI design system featuring macOS-style window decorati
 ### ✨ Features
 
 - 🎨 **Complete Color System** - Warm terracotta primary color (#cc7a60), fluorescent green command prefix, full syntax highlighting palette
+- 🌙 **Dark Mode Support** - Complete dark mode implementation with smooth theme switching, system preference detection, and localStorage persistence
 - 🔤 **Monospace Typography** - Complete font system based on JetBrains Mono
 - 📐 **Precise Spacing System** - Spacing scale based on 4px multiples
-- 🪟 **macOS-style Components** - Terminal windows, command buttons, code blocks, and complete component library
+- 🪟 **macOS-style Components** - Terminal windows, command buttons, code blocks, skill cards with line numbers, category cards with color themes, and complete component library
 - 🎭 **Rich Animations** - Smooth transitions and interactive feedback
 - 📱 **Responsive Design** - Complete mobile, tablet, and desktop adaptation
 - ♿ **Accessibility Support** - WCAG-compliant color contrast and focus indicators
@@ -33,6 +34,7 @@ A complete terminal-style UI design system featuring macOS-style window decorati
 - Semantic colors (backgrounds, foregrounds, borders, status colors)
 - Syntax highlighting colors (keywords, strings, numbers, comments)
 - macOS window button colors (red/yellow/green)
+- **Dark Mode Colors**: Lighter primary (#d99178), dark backgrounds (#0a0a0a, #111), light text (#ededed), adjusted syntax colors for better contrast
 
 #### Typography
 
@@ -43,12 +45,14 @@ A complete terminal-style UI design system featuring macOS-style window decorati
 #### Component Library
 
 - Terminal window components (with macOS-style dots)
-- Navigation command buttons
-- Code block displays
-- Skill/card components
+- Navigation command buttons with theme toggle
+- Code block displays with syntax highlighting
+- Skill cards with line numbers, avatars, and star ratings
+- Category cards with color themes (Cyan, Blue, Purple, Amber)
 - Search boxes
 - Pagination
 - FAQ components
+- Theme toggle button with sun/moon icons
 - And more...
 
 ### 📦 Installation
@@ -186,7 +190,7 @@ Check `references/component-templates.html` for HTML templates of all components
 
 ### 📐 Design Tokens
 
-#### Colors
+#### Colors (Light Mode)
 
 ```css
 --primary: #cc7a60;           /* Primary color */
@@ -194,6 +198,16 @@ Check `references/component-templates.html` for HTML templates of all components
 --success: #22c55e;            /* Success color */
 --foreground: #111827;         /* Foreground color */
 --border: #8b929e;             /* Border color */
+```
+
+#### Colors (Dark Mode)
+
+```css
+--primary: #d99178;           /* Lighter primary for contrast */
+--foreground: #ededed;         /* Light text */
+--background: #0a0a0a;         /* Deep black */
+--card: #111;                  /* Slightly lighter */
+--border: #606068;             /* Lighter for visibility */
 ```
 
 #### Spacing
@@ -238,6 +252,28 @@ See [design-tokens.json](./references/design-tokens.json) for complete design to
 - Cursor blink effect
 - Border pulse animation
 - Fade-in-up animation (card entrance)
+- Theme switching with smooth color transitions
+- Card hover effects with lift and shadow
+
+### 🌙 Dark Mode
+
+The design system includes a complete dark mode implementation:
+
+- **Automatic Theme Detection** - Detects system preference on first load
+- **Manual Toggle** - Theme toggle button with sun/moon icons
+- **Persistent Preference** - Saves theme choice in localStorage
+- **Smooth Transitions** - All color changes animate smoothly (0.2s)
+- **Complete Coverage** - All components adapt to dark mode
+- **Enhanced Contrast** - Optimized colors for dark backgrounds
+
+**Dark Mode Colors:**
+- Primary: `#d99178` (lighter for better contrast)
+- Background: `#0a0a0a` (deep black)
+- Card: `#111` (slightly lighter)
+- Foreground: `#ededed` (light gray)
+- Borders: `#606068` (lighter for visibility)
+
+See [SKILL.md](./SKILL.md) for complete dark mode documentation.
 
 ### 🤝 Contributing
 
@@ -268,9 +304,10 @@ For questions or suggestions:
 ### ✨ 特性
 
 - 🎨 **完整的配色系统** - 暖陶土色主色调 (#cc7a60)，荧光绿命令前缀，完整的语法高亮配色
+- 🌙 **暗色模式支持** - 完整的暗色模式实现，支持平滑主题切换、系统偏好检测和本地存储持久化
 - 🔤 **等宽字体系统** - 基于 JetBrains Mono 的完整字体规范
 - 📐 **精确的间距系统** - 基于 4px 的间距倍数系统
-- 🪟 **macOS 风格组件** - 终端窗口、命令按钮、代码块等完整组件库
+- 🪟 **macOS 风格组件** - 终端窗口、命令按钮、代码块、带行号的技能卡片、多色主题分类卡片等完整组件库
 - 🎭 **丰富的动画效果** - 平滑的过渡动画和交互反馈
 - 📱 **响应式设计** - 完整的移动端、平板、桌面适配方案
 - ♿ **无障碍支持** - 符合 WCAG 标准的颜色对比度和焦点指示
@@ -289,6 +326,7 @@ For questions or suggestions:
 - 语义颜色（背景、前景、边框、状态色）
 - 语法高亮颜色（关键字、字符串、数字、注释）
 - macOS 窗口按钮颜色（红/黄/绿）
+- **暗色模式配色**：更亮的主色 (#d99178)，深色背景 (#0a0a0a, #111)，浅色文字 (#ededed)，优化的语法高亮颜色以提升对比度
 
 #### 字体系统
 
@@ -299,12 +337,14 @@ For questions or suggestions:
 #### 组件库
 
 - 终端窗口组件（带 macOS 风格圆点）
-- 导航命令按钮
-- 代码块显示
-- 技能/卡片组件
+- 导航命令按钮（带主题切换）
+- 代码块显示（语法高亮）
+- 技能卡片（带行号、头像、星标）
+- 分类卡片（多色主题：青色、蓝色、紫色、琥珀色）
 - 搜索框
 - 分页器
 - FAQ 组件
+- 主题切换按钮（太阳/月亮图标）
 - 等等...
 
 ### 📦 安装
@@ -442,7 +482,7 @@ cp -r terminal-ui-design-system ~/.cursor/skills/
 
 ### 📐 设计令牌
 
-#### 颜色
+#### 颜色（亮色模式）
 
 ```css
 --primary: #cc7a60;           /* 主色 */
@@ -450,6 +490,16 @@ cp -r terminal-ui-design-system ~/.cursor/skills/
 --success: #22c55e;            /* 成功色 */
 --foreground: #111827;         /* 前景色 */
 --border: #8b929e;             /* 边框色 */
+```
+
+#### 颜色（暗色模式）
+
+```css
+--primary: #d99178;           /* 更亮的主色以提升对比度 */
+--foreground: #ededed;         /* 浅色文字 */
+--background: #0a0a0a;         /* 深黑色 */
+--card: #111;                  /* 稍亮 */
+--border: #606068;             /* 更亮以提升可见性 */
 ```
 
 #### 间距
@@ -494,6 +544,28 @@ cp -r terminal-ui-design-system ~/.cursor/skills/
 - 光标闪烁效果
 - 边框脉冲动画
 - 淡入上移动画（卡片入场）
+- 主题切换时的平滑颜色过渡
+- 卡片悬停效果（上浮和阴影）
+
+### 🌙 暗色模式
+
+设计系统包含完整的暗色模式实现：
+
+- **自动主题检测** - 首次加载时检测系统偏好
+- **手动切换** - 带太阳/月亮图标的主题切换按钮
+- **持久化偏好** - 在 localStorage 中保存主题选择
+- **平滑过渡** - 所有颜色变化平滑动画 (0.2s)
+- **完整覆盖** - 所有组件都适配暗色模式
+- **增强对比度** - 针对暗色背景优化的颜色
+
+**暗色模式配色：**
+- 主色：`#d99178`（更亮以提升对比度）
+- 背景：`#0a0a0a`（深黑色）
+- 卡片：`#111`（稍亮）
+- 前景：`#ededed`（浅灰色）
+- 边框：`#606068`（更亮以提升可见性）
+
+完整暗色模式文档请查看 [SKILL.md](./SKILL.md)。
 
 ### 🤝 贡献
 
